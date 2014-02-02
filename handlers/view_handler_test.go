@@ -8,13 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"testing"
 )
-
-func TestViewHandler(t *testing.T) {
-	RegisterFailHandler(Fail)
-	RunSpecs(t, "ViewHandler Spec")
-}
 
 var _ = Describe("ViewHandler", func() {
 	var handler func(w http.ResponseWriter, r *http.Request)
