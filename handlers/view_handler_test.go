@@ -1,7 +1,6 @@
 package handlers_test
 
 import (
-	_ "fmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/wingyplus/gowiki/handlers"
@@ -40,13 +39,15 @@ var _ = Describe("ViewHandler", func() {
 			Expect(w.Body.String()).To(Equal("<h1>FoundPage</h1><div>HelloWorld</div>"))
 		})
 	})
-	//Describe("Not found page", func() {
-	//        req, _ := http.NewRequest("GET", "/view/NotFoundPage", nil)
-	//        w := httptest.NewRecorder()
+	Describe("Not found page", func() {
+		It("should redirect to /edit/NotFoundPage", func() {
+			req, _ := http.NewRequest("GET", "/view/NotFoundPage", nil)
+			w := httptest.NewRecorder()
 
-	//        handler(w, req)
+			handler(w, req)
 
-	//        //Expect(w.Code).To(Equal(http.StatusFound))
-	//        //fmt.Printf("%s", w.Header())
-	//})
+			Expect(w.Code).To(Equal(http.StatusFound))
+			Expect(w.Header()["Location"]).To(Equal([]string{"/edit/NotFoundPage"}))
+		})
+	})
 })
