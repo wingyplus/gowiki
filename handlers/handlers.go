@@ -24,3 +24,11 @@ func EditHandler(w http.ResponseWriter, req *http.Request) {
 	<button type="submit">Save</button>
 </form>`, title, title)
 }
+
+func SaveHandler(w http.ResponseWriter, req *http.Request) {
+	title := req.URL.Path[len("/save/"):]
+	body := req.FormValue("body")
+	page := &page.Page{Title: title, Body: []byte(body)}
+	page.Save()
+	http.Redirect(w, req, "/view/"+title, http.StatusFound)
+}

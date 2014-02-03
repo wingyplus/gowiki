@@ -29,4 +29,15 @@ var _ = Describe("EditHandler", func() {
 </form>`))
 		})
 	})
+	//PContext("when found page", func() {
+	//        BeforeEach(func() {
+	//                os.Mkdir("data")
+	//                ioutil.WriteFile("data/FoundPage.txt", []byte("HelloWorld"), 0600)
+	//        })
+	//        AfterEach(func() {
+	//                os.RemoveAll("data")
+	//        })
+	//        It("should has text body in textarea", func() {
+	//        })
+	//})
 })

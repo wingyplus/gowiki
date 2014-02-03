@@ -41,7 +41,7 @@ var _ = Describe("ViewHandler", func() {
 			handler(w, req)
 
 			Expect(w.Code).To(Equal(http.StatusFound))
-			Expect(w.Header()["Location"]).To(Equal([]string{"/edit/NotFoundPage"}))
+			Expect(w.Header().Get("Location")).To(Equal([]string{"/edit/NotFoundPage"}))
 		})
 	})
 })
