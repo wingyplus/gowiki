@@ -4,4 +4,4 @@ go:
     - tip
 install:
     - make deps-test
-script: make test
+script: PATH=$HOME/gopath/bin:$PATH make test
